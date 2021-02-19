@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "firstName": "Camey",
+        "lastName": "Mounce",
+        "email": "cmounce0@sfgate.com",
+        "password": "807-82-4757"
+    },
+    {
+        "id": 2,
+        "firstName": "Cara",
+        "lastName": "Kemmey",
+        "email": "ckemmey1@harvard.edu",
+        "password": "498-97-9862"
+    },
+    {
+        "id": 3,
+        "firstName": "Ronna",
+        "lastName": "Howship",
+        "email": "rhowship2@ox.ac.uk",
+        "password": "490-08-8567"
+    },
+    {
+        "id": 4,
+        "firstName": "Chane",
+        "lastName": "Kohrsen",
+        "email": "ckohrsen3@nps.gov",
+        "password": "863-39-9061"
+    },
+    {
+        "id": 5,
+        "firstName": "Nelle",
+        "lastName": "Megson",
+        "email": "nmegson4@sitemeter.com",
+        "password": "513-81-3920"
+    },
+    {
+        "id": 6,
+        "firstName": "Wilmer",
+        "lastName": "Aleksich",
+        "email": "waleksich5@biglobe.ne.jp",
+        "password": "779-62-4263"
+    },
+    {
+        "id": 7,
+        "firstName": "Marina",
+        "lastName": "Stangroom",
+        "email": "mstangroom6@linkedin.com",
+        "password": "754-81-0777"
+    },
+    {
+        "id": 8,
+        "firstName": "Clive",
+        "lastName": "Cyson",
+        "email": "ccyson7@acquirethisname.com",
+        "password": "644-37-3068"
+    },
+    {
+        "id": 9,
+        "firstName": "Deeanne",
+        "lastName": "Gairdner",
+        "email": "dgairdner8@seesaa.net",
+        "password": "139-60-1515"
+    },
+    {
+        "id": 10,
+        "firstName": "Frannie",
+        "lastName": "Claricoats",
+        "email": "fclaricoats9@cnet.com",
+        "password": "173-05-1641"
+    }
+]
