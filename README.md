@@ -21,6 +21,7 @@ I really like GraphQL!
 - Authentication middleware with JWT
 - Business layer auth check and Authorization
 - DataLoader to solve N+1 problem
+- Error handling
 
 User data from https://www.mockaroo.com/
 
@@ -34,3 +35,7 @@ YouTube
 
 - [GraphQL: The Documentary](https://www.youtube.com/watch?v=783ccP__No8)
 - [GraphQL Tutorial #1 - Introduction to GraphQL](https://www.youtube.com/watch?v=Y0lDGjwRYKw)
+
+LinkedIn
+
+- [Migrating from REST to GraphQL](https://www.linkedin.com/learning/migrating-from-rest-to-graphql/replace-rest-with-graphql)
