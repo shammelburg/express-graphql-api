@@ -2,6 +2,12 @@
 
 My first attempt at GraphQL
 
+Things I needed to figure out before really diving into GraphQL, such as, auth, n+1 problem, making database request, scalable folder structure, etc.
+
+So I've put this project together to figure it out,
+
+I really like GraphQL!
+
 #### To start
 - `git clone https://github.com/shammelburg/express-graphql-api.git`
 - npm install
@@ -14,7 +20,7 @@ My first attempt at GraphQL
 - Mulitple defType / resolver files
 - Authentication middleware with JWT
 - Business layer auth check and Authorization
-- DataLoader to solve N+1 issue
+- DataLoader to solve N+1 problem
 
 User data from https://www.mockaroo.com/
 
