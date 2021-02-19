@@ -1,13 +1,23 @@
 ## Express GraphQL API
 
-This is an example Express GraphQL API
+My first attempt at GraphQL
 
-Data from https://www.mockaroo.com/
+- GraphiQL => http://localhost:4000/graphql
+- JSON database
+- Mulitple defType / resolver files
+- Authentication middleware with JWT
+- Business layer auth check and Authorization
+- DataLoader to solve N+1 issue
 
-- JWT to access data
-- Mulitple schema / resolver files
-
+User data from https://www.mockaroo.com/
 
 Learning material
-- https://www.apollographql.com/blog/modularizing-your-graphql-schema-code-d7f71d5ed5f2/
-- https://www.youtube.com/watch?v=5RGEODLhjhY
+
+- https://graphql.org/learn/
+- https://jwt.io/
+- [Modularizing your GraphQL schema code](https://www.apollographql.com/blog/modularizing-your-graphql-schema-code-d7f71d5ed5f2/)
+
+YouTube
+
+- [GraphQL: The Documentary](https://www.youtube.com/watch?v=783ccP__No8)
+- [GraphQL Tutorial #1 - Introduction to GraphQL](https://www.youtube.com/watch?v=Y0lDGjwRYKw)
