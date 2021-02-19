@@ -2,6 +2,13 @@
 
 My first attempt at GraphQL
 
+#### To start
+- `git clone https://github.com/shammelburg/express-graphql-api.git`
+- npm install
+- npm start
+
+
+#### Features
 - GraphiQL => http://localhost:4000/graphql
 - JSON database
 - Mulitple defType / resolver files
