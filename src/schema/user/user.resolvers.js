@@ -26,7 +26,11 @@ const resolvers = {
                         .map(r => r.name)
                 )
 
-            const token = jwt.sign({ email, roles: userRoles }, '1234567890', { expiresIn: '1h' })
+            const token = jwt.sign(
+                { email, roles: userRoles },
+                process.env.JWT_KEY,
+                { expiresIn: '1h' }
+            )
             return token
         },
         users: (parent, args, context, info) => {

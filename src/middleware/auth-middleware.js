@@ -12,7 +12,7 @@ const authMiddleware = (req, res, next) => {
 
     try {
         const token = authHeader.split(' ')[1]
-        decoded = jwt.verify(token, '1234567890')
+        decoded = jwt.verify(token, process.env.JWT_KEY)
     } catch (error) {
         req.isAuth = false
         req.error = error.message

@@ -44,11 +44,11 @@ app.use('/graphql', graphqlHTTP(req => ({
         const data = err.originalError.data
         return {
             // ...err, 
-            message, 
-            code, 
+            message,
+            code,
             data
         }
     }
 })))
 
-app.listen(4000, () => console.log(`GraphQL Server running on http://localhost:4000/graphql`))
+app.listen(process.env.PORT, () => console.log(`[${process.env.NODE_ENV}] GraphQL Server running on http://localhost:4000/graphql`))

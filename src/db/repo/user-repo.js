@@ -1,9 +1,6 @@
 let users = require('../data/users.json')
 
 module.exports = (context, fieldName) => {
-
-    console.log(context)
-
     // These fields require the requester to be authenticated
     const fieldsThatRequireAuth = [
         'user',
