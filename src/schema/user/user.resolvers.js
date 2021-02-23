@@ -27,7 +27,7 @@ const resolvers = {
                 )
 
             const token = jwt.sign(
-                { email, roles: userRoles },
+                { email, roles: userRoles[0] },
                 process.env.JWT_KEY,
                 { expiresIn: '1h' }
             )
