@@ -22,6 +22,7 @@ I really like GraphQL!
 - Business layer auth check and Authorization
 - DataLoader to solve N+1 problem
 - Error handling
+- **Subscriptions** with `graphql-ws`
 
 User data from https://www.mockaroo.com/
 
@@ -30,6 +31,7 @@ Learning material
 - https://graphql.org/learn/
 - https://jwt.io/
 - [Modularizing your GraphQL schema code](https://www.apollographql.com/blog/modularizing-your-graphql-schema-code-d7f71d5ed5f2/)
+- [GraphQL over WebSockets](https://the-guild.dev/blog/graphql-over-websockets)
 
 YouTube
 
@@ -39,3 +41,8 @@ YouTube
 LinkedIn
 
 - [Migrating from REST to GraphQL](https://www.linkedin.com/learning/migrating-from-rest-to-graphql/replace-rest-with-graphql)
+
+Repos
+- [graphql/express-graphql](https://github.com/graphql/express-graphql)
+- [enisdenjo/graphql-ws](https://github.com/enisdenjo/graphql-ws)
+- [websockets/ws](https://github.com/websockets/ws)
