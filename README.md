@@ -24,6 +24,9 @@ I really like GraphQL!
 - Error handling
 - **Subscriptions** with `graphql-ws`
 
+#### Issues
+- `PubSub` not available in Subscription context
+
 User data from https://www.mockaroo.com/
 
 Learning material

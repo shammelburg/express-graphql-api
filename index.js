@@ -8,9 +8,6 @@ const ws = require('ws')
 const { useServer } = require('graphql-ws/lib/use/ws');
 const { execute, subscribe } = require('graphql');
 
-// const { PubSub } = require('graphql-subscriptions')
-// const pubsub = new PubSub()
-
 const app = express()
 const schema = require('./src/schema')
 // const { rolesDataLoader } = require('./src/loaders');
@@ -25,19 +22,18 @@ app.get('/', (req, res) => res.send('GraphQL Server is running'))
 const PORT = process.env.PORT;
 
 // https://github.com/graphql/express-graphql
+// If no context is created here, the request object is passed instead
 app.use('/graphql', graphqlHTTP(req => ({
     schema,
     graphiql: {
         defaultQuery: require('./default-query'),
         headerEditorEnabled: true,
-        subscriptionEndpoint: `ws://localhost:4000/graphql`,
+        // subscriptionEndpoint: `ws://localhost:4000/graphql`
     },
-    // If no context is created here, the request object is passed instead
     context: {
         isAuth: req.isAuth,
         user: req.user,
-        error: req.error,
-        // pubsub,
+        error: req.error
         // loaders: {
         //     rolesLoader: rolesDataLoader
         // }
@@ -64,37 +60,43 @@ app.use('/graphql', graphqlHTTP(req => ({
     }
 })))
 
-// GRAPHQL-WS
 const server = app.listen(PORT, () => {
-    console.log(`[${process.env.NODE_ENV}] GraphQL Server running on http://localhost:4000/graphql`)
+    const sAddress = server.address()
+    console.log(`[${process.env.NODE_ENV}] GraphQL Server running on http://${sAddress.address}:${sAddress.port}/graphql`)
+    
+    // GRAPHQL-WS
+    if (process.env.USE_WS) {
+        const path = '/graphql-subs'
+        // create and use the websocket server
+        const wsServer = new ws.Server({
+            server,
+            path
+        });
 
-    // create and use the websocket server
-    const wsServer = new ws.Server({
-        server,
-        path: '/graphql',
-    });
-
-    useServer(
-        {
-            schema,
-            execute,
-            subscribe,
-            onConnect: (ctx) => {
-                console.log('Connect');
+        useServer(
+            {
+                schema,
+                execute,
+                subscribe,
+                onConnect: (ctx) => {
+                    console.log('Connect');
+                },
+                onSubscribe: (ctx, msg) => {
+                    console.log('Subscribe');
+                },
+                onNext: (ctx, msg, args, result) => {
+                    console.debug('Next');
+                },
+                onError: (ctx, msg, errors) => {
+                    console.error('Error');
+                },
+                onComplete: (ctx, msg) => {
+                    console.log('Complete');
+                },
             },
-            onSubscribe: (ctx, msg) => {
-                console.log('Subscribe');
-            },
-            onNext: (ctx, msg, args, result) => {
-                console.debug('Next');
-            },
-            onError: (ctx, msg, errors) => {
-                console.error('Error');
-            },
-            onComplete: (ctx, msg) => {
-                console.log('Complete');
-            },
-        },
-        wsServer
-    );
+            wsServer
+        );
+        const wsAddress = wsServer.address()
+        console.log(`[${process.env.NODE_ENV}] WebSockets listening on ws://${wsAddress.address}:${wsAddress.port}${path}`)
+    }
 });

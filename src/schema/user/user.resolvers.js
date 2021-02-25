@@ -9,6 +9,8 @@ const {
     rolesDataLoader
 } = require('../../loaders')
 
+const NEW_USER_EVENT = 'NEW_USER_EVENT'
+
 const resolvers = {
     Query: {
         login: (parent, { input }, context, info) => {
@@ -51,7 +53,9 @@ const resolvers = {
     Mutation: {
         createUser: (root, { input }, context, info) => {
             const id = userRepo(context, info.fieldName).insertUser(input)
-            pubsub.publish('NEW_USER', { newUser: { ...input, id } })
+
+            pubsub.publish(NEW_USER_EVENT, { newUser: { ...input, id } })
+
             return { ...input, id }
         },
         updateUser: (root, { input }, context, info) => {
@@ -65,9 +69,7 @@ const resolvers = {
     // pubsub - Cannot read property 'pubsub' of undefined
     Subscription: {
         newUser: {
-            subscribe: (parent, args, context, info, x) => {
-                return pubsub.asyncIterator('NEW_USER')
-            }
+            subscribe: (parent, args, context) => pubsub.asyncIterator(NEW_USER_EVENT)
         }
     }
 }
