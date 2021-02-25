@@ -20,11 +20,8 @@ const resolvers = {
 
             const roles = roleRepo().getRoles()
             const userRoles = roleRepo().getUserRoles(user.id)
-                .map(ur =>
-                    roles
-                        .filter(r => r.id === ur.roleId)
-                        .map(r => r.name)
-                )
+                .map(ur => ur.roleId)
+                .map(id => roles.find(r => r.id === id).name)
 
             const token = jwt.sign(
                 { email, roles: userRoles[0] },
