@@ -1,4 +1,6 @@
-const typeDefs = `
+const gql = require('graphql-tag')
+
+const typeDefs = gql`
     extend type Query {
         roles: [Role]
         userRoles: [UserRole]

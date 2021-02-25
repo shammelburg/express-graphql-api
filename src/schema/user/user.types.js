@@ -1,4 +1,6 @@
-const typeDefs = `
+const gql = require('graphql-tag')
+
+const typeDefs = gql`
     type Query {
         login(input: UserLogin!): String
         
@@ -10,6 +12,10 @@ const typeDefs = `
         createUser(input: UserMutation): User
         updateUser(input: UserMutation): User
         deleteUser: String
+    }
+
+    type Subscription {
+        newUser: User!
     }
 
     type User {

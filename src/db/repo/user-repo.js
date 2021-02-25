@@ -18,7 +18,6 @@ module.exports = (context, fieldName) => {
 
     // Authorization for user with "Admin" role only
     const hasAdminRole = context.user && context.user.roles.includes('Admin')
-
     return {
         getUserByEmail: (email) => {
             console.log('1 call to db for user by email')

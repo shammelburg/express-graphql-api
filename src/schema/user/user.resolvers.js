@@ -2,6 +2,9 @@ const jwt = require('jsonwebtoken')
 const userRepo = require('../../db/repo/user-repo')
 const roleRepo = require('../../db/repo/role-repo')
 
+const { PubSub } = require('graphql-subscriptions')
+const pubsub = new PubSub()
+
 const {
     rolesDataLoader
 } = require('../../loaders')
@@ -20,11 +23,8 @@ const resolvers = {
 
             const roles = roleRepo().getRoles()
             const userRoles = roleRepo().getUserRoles(user.id)
-                .map(ur =>
-                    roles
-                        .filter(r => r.id === ur.roleId)
-                        .map(r => r.name)
-                )
+                .map(ur => ur.roleId)
+                .map(id => roles.find(r => r.id === id).name)
 
             const token = jwt.sign(
                 { email, roles: userRoles },
@@ -51,6 +51,7 @@ const resolvers = {
     Mutation: {
         createUser: (root, { input }, context, info) => {
             const id = userRepo(context, info.fieldName).insertUser(input)
+            pubsub.publish('NEW_USER', { newUser: { ...input, id } })
             return { ...input, id }
         },
         updateUser: (root, { input }, context, info) => {
@@ -59,6 +60,14 @@ const resolvers = {
         },
         deleteUser: (root, { id }, context, info) => {
             return userRepo(context, info.fieldName).deleteUser(id)
+        }
+    },
+    // pubsub - Cannot read property 'pubsub' of undefined
+    Subscription: {
+        newUser: {
+            subscribe: (parent, args, context, info, x) => {
+                return pubsub.asyncIterator('NEW_USER')
+            }
         }
     }
 }
