@@ -1,7 +1,7 @@
 {
   "name": "express-graphql-api",
   "version": "1.0.0",
-  "description": "A Express GraphQL API using Authentication middlware, Business layer Authorization and DataLoader.",
+  "description": "A Express GraphQL API using Authentication middlware, Business layer Authorization, DataLoader and Subscriptions.",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
@@ -12,7 +12,9 @@
     "GraphQL",
     "DataLoader",
     "Authentication",
-    "Authorization"
+    "Authorization",
+    "Subscriptions",
+    "WebSockets"
   ],
   "author": "Sander Hammelburg",
   "license": "ISC",
