@@ -27,8 +27,7 @@ app.use('/graphql', graphqlHTTP(req => ({
     schema,
     graphiql: {
         defaultQuery: require('./default-query'),
-        headerEditorEnabled: true,
-        // subscriptionEndpoint: `ws://localhost:4000/graphql`
+        headerEditorEnabled: true
     },
     context: {
         isAuth: req.isAuth,
@@ -63,11 +62,11 @@ app.use('/graphql', graphqlHTTP(req => ({
 const server = app.listen(PORT, () => {
     const sAddress = server.address()
     console.log(`[${process.env.NODE_ENV}] GraphQL Server running on http://${sAddress.address}:${sAddress.port}/graphql`)
-    
+
     // GRAPHQL-WS
     if (process.env.USE_WS) {
-        const path = '/graphql-subs'
         // create and use the websocket server
+        const path = '/subscriptions'
         const wsServer = new ws.Server({
             server,
             path
