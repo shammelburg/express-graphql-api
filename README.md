@@ -6,12 +6,17 @@ Things I needed to figure out before really diving into GraphQL, such as, auth, 
 
 So I've put this project together to figure it out,
 
-I really like GraphQL!
+GraphQL is awesome!
 
 #### To start
 - `git clone https://github.com/shammelburg/express-graphql-api.git`
+- cd express-graphql-api
 - npm install
 - npm start
+
+#### To start with client sample project
+- [shammelburg/graphql-rxjs-angular](https://github.com/shammelburg/graphql-rxjs-angular)
+    - This project was create to show that subscriptions work with `express-graphql`
 
 
 #### Features
@@ -24,8 +29,6 @@ I really like GraphQL!
 - Error handling
 - **Subscriptions** with `graphql-ws`
 
-#### Issues
-- `PubSub` not available in Subscription context
 
 User data from https://www.mockaroo.com/
 
