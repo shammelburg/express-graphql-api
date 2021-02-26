@@ -2,9 +2,13 @@ const jwt = require('jsonwebtoken')
 const userRepo = require('../../db/repo/user-repo')
 const roleRepo = require('../../db/repo/role-repo')
 
+const pubsub = require('../../helpers/pubsub')
+
 const {
     rolesDataLoader
 } = require('../../loaders')
+
+const NEW_USER_EVENT = 'NEW_USER_EVENT'
 
 const resolvers = {
     Query: {
@@ -48,6 +52,9 @@ const resolvers = {
     Mutation: {
         createUser: (root, { input }, context, info) => {
             const id = userRepo(context, info.fieldName).insertUser(input)
+
+            pubsub.publish(NEW_USER_EVENT, { newUser: { ...input, id } })
+
             return { ...input, id }
         },
         updateUser: (root, { input }, context, info) => {
@@ -56,6 +63,12 @@ const resolvers = {
         },
         deleteUser: (root, { id }, context, info) => {
             return userRepo(context, info.fieldName).deleteUser(id)
+        }
+    },
+    // pubsub - Cannot read property 'pubsub' of undefined
+    Subscription: {
+        newUser: {
+            subscribe: (parent, args, context) => pubsub.asyncIterator(NEW_USER_EVENT)
         }
     }
 }
