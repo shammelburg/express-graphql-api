@@ -16,7 +16,7 @@ GraphQL is awesome!
 
 #### To start with client sample project
 - [shammelburg/graphql-rxjs-angular](https://github.com/shammelburg/graphql-rxjs-angular)
-    - This project was create to show that subscriptions work with `express-graphql`
+    - This project was created to show that subscriptions work with `express-graphql`
 
 
 #### Features
