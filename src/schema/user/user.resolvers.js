@@ -2,8 +2,7 @@ const jwt = require('jsonwebtoken')
 const userRepo = require('../../db/repo/user-repo')
 const roleRepo = require('../../db/repo/role-repo')
 
-const { PubSub } = require('graphql-subscriptions')
-const pubsub = new PubSub()
+const pubsub = require('../../helpers/pubsub')
 
 const {
     rolesDataLoader
