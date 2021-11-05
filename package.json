@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "nodemon -r dotenv/config index.js dotenv_config_path=.env",
+    "start": "node index.js",
+    "dev": "nodemon -r dotenv/config index.js dotenv_config_path=.env",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -19,25 +20,25 @@
   "author": "Sander Hammelburg",
   "license": "ISC",
   "dependencies": {
+    "@graphql-tools/merge": "8.2.1",
+    "@graphql-tools/schema": "8.3.1",
     "compression": "1.7.4",
-    "cors": "^2.8.5",
+    "cors": "2.8.5",
     "dataloader": "2.0.0",
     "express": "4.17.1",
     "express-graphql": "0.12.0",
-    "express-jwt": "6.0.0",
-    "graphql": "15.5.0",
-    "graphql-subscriptions": "^1.2.0",
-    "graphql-tag": "^2.11.0",
-    "graphql-tools": "7.0.4",
-    "graphql-ws": "^4.1.6",
-    "lodash.merge": "4.6.2",
-    "ws": "^7.4.3"
+    "express-jwt": "6.1.0",
+    "graphql": "16.0.1",
+    "graphql-subscriptions": "2.0.0",
+    "graphql-tag": "2.12.5",
+    "graphql-ws": "5.5.5",
+    "ws": "8.2.3"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-preset-env": "1.7.0",
     "babel-preset-stage-0": "6.24.1",
-    "dotenv": "8.2.0",
-    "nodemon": "2.0.7"
+    "dotenv": "10.0.0",
+    "nodemon": "2.0.14"
   }
 }
