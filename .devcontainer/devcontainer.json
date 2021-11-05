@@ -17,7 +17,8 @@
 	"extensions": [
 		"dbaeumer.vscode-eslint",
 		"msjsdiag.debugger-for-chrome",
-		"xabikos.javascriptsnippets"
+		"xabikos.javascriptsnippets",
+		"graphql.vscode-graphql"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
