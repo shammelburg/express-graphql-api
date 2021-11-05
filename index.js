@@ -61,7 +61,7 @@ app.use('/graphql', graphqlHTTP(req => ({
 
 const server = app.listen(PORT, () => {
     const sAddress = server.address()
-    console.log(`[${process.env.NODE_ENV}] GraphQL Server running on http://${sAddress.address}:${sAddress.port}/graphql`)
+    console.log(`[${process.env.NODE_ENV}] GraphQL Server running on http://localhost:${sAddress.port}/graphql`)
 
     // GRAPHQL-WS
     if (process.env.USE_WS) {
@@ -96,6 +96,6 @@ const server = app.listen(PORT, () => {
             wsServer
         );
         const wsAddress = wsServer.address()
-        console.log(`[${process.env.NODE_ENV}] WebSockets listening on ws://${wsAddress.address}:${wsAddress.port}${path}`)
+        console.log(`[${process.env.NODE_ENV}] WebSockets listening on ws://localhost:${wsAddress.port}${path}`)
     }
 });
