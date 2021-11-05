@@ -1,5 +1,5 @@
-const { makeExecutableSchema } = require('graphql-tools')
-const merge = require('lodash.merge');
+const { makeExecutableSchema } = require('@graphql-tools/schema')
+const { mergeResolvers } = require('@graphql-tools/merge');
 
 const userSchema = require('./user')
 const roleSchema = require('./role')
@@ -10,7 +10,7 @@ const schema = makeExecutableSchema({
         userSchema.typeDefs, // First defines the type Query
         roleSchema.typeDefs, // Others extends type Query
     ],
-    resolvers: merge(
+    resolvers: mergeResolvers(
         userSchema.resolvers,
         roleSchema.resolvers,
     )
